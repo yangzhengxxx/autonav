@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz" output="screen"
+        args="-d $(find can1_pkg)/rviz/navigate.rviz"/>
+</launch>

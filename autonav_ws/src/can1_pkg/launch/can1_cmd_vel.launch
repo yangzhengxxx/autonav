@@ -1,0 +1,23 @@
+<launch>
+  <arg name="interface" default="can1"/>
+  <arg name="can_id" default="16"/>
+  <arg name="cmd_vel_topic" default="/cmd_vel"/>
+  <arg name="enable" default="false"/>
+  <arg name="rate_hz" default="20.0"/>
+  <arg name="cmd_timeout" default="0.3"/>
+  <arg name="max_vx" default="0.3"/>
+  <arg name="max_vy" default="0.2"/>
+  <arg name="max_wz" default="0.6"/>
+
+  <node pkg="can1_pkg" type="can1_cmd_vel" name="can1_cmd_vel" output="screen">
+    <param name="interface" value="$(arg interface)"/>
+    <param name="can_id" value="$(arg can_id)"/>
+    <param name="cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+    <param name="enable" value="$(arg enable)"/>
+    <param name="rate_hz" value="$(arg rate_hz)"/>
+    <param name="cmd_timeout" value="$(arg cmd_timeout)"/>
+    <param name="max_vx" value="$(arg max_vx)"/>
+    <param name="max_vy" value="$(arg max_vy)"/>
+    <param name="max_wz" value="$(arg max_wz)"/>
+  </node>
+</launch>

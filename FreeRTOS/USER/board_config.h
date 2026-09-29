@@ -1,0 +1,44 @@
+#ifndef BOARD_CONFIG_H
+#define BOARD_CONFIG_H
+
+#ifndef USE_BT_REMOTE
+#define USE_BT_REMOTE 0
+#endif
+
+#ifndef USE_DEBUG_UART
+#define USE_DEBUG_UART 0
+#endif
+
+#ifndef ENABLE_CONTROL_TELEMETRY
+#define ENABLE_CONTROL_TELEMETRY 0
+#endif
+
+#ifndef CAN_CMD_TIMEOUT_MS
+#define CAN_CMD_TIMEOUT_MS 500U
+#endif
+
+#ifndef DIAGNOSTIC_PERIOD_MS
+#define DIAGNOSTIC_PERIOD_MS 333U
+#endif
+
+#ifndef USE_IWDG
+#define USE_IWDG 1
+#endif
+
+#ifndef IWDG_FREEZE_IN_DEBUG
+#define IWDG_FREEZE_IN_DEBUG 1
+#endif
+
+#ifndef SUPERVISOR_PERIOD_MS
+#define SUPERVISOR_PERIOD_MS 100U
+#endif
+
+#ifndef TASK_HEARTBEAT_MISS_LIMIT
+#define TASK_HEARTBEAT_MISS_LIMIT 3U
+#endif
+
+#ifndef TASK_STACK_LOW_WATERMARK
+#define TASK_STACK_LOW_WATERMARK 64U
+#endif
+
+#endif

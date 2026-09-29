@@ -1,0 +1,30 @@
+<launch>
+
+  <arg name="interface" default="can1"/>
+  <arg name="can_id" default="17"/>
+
+  <arg name="alpha" default="0.3"/>
+  <arg name="odom_frame" default="odom"/>
+  <arg name="base_frame" default="base_link"/>
+  <arg name="odom_topic" default="/odom"/>
+  <arg name="publish_tf" default="true"/>
+
+  <arg name="enable_bias_calib" default="true"/>
+  <arg name="bias_calib_duration" default="2.0"/>
+  <arg name="angular_deadzone" default="0.02"/>
+  <arg name="linear_still_thresh" default="0.02"/>
+
+  <node pkg="can1_pkg" type="can1_receiver_node" name="can1_receiver_node" output="screen">
+    <param name="interface" value="$(arg interface)"/>
+    <param name="can_id" value="$(arg can_id)"/>
+    <param name="alpha" value="$(arg alpha)"/>
+    <param name="odom_frame" value="$(arg odom_frame)"/>
+    <param name="base_frame" value="$(arg base_frame)"/>
+    <param name="odom_topic" value="$(arg odom_topic)"/>
+    <param name="publish_tf" value="$(arg publish_tf)"/>
+    <param name="enable_bias_calib" value="$(arg enable_bias_calib)"/>
+    <param name="bias_calib_duration" value="$(arg bias_calib_duration)"/>
+    <param name="angular_deadzone" value="$(arg angular_deadzone)"/>
+    <param name="linear_still_thresh" value="$(arg linear_still_thresh)"/>
+  </node>
+</launch>

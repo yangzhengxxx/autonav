@@ -1,0 +1,30 @@
+<launch>
+  <arg name="map_file" default="$(find can1_pkg)/../2dmaps/room1.yaml"/>
+  <arg name="scan_downsampled_topic" default="/scan_downsampled"/>
+  <arg name="cmd_vel_topic" default="/cmd_vel"/>
+
+  <arg name="enable_can_cmd" default="false"/>
+
+  <include file="$(find can1_pkg)/launch/amcl.launch">
+    <arg name="map_file" value="$(arg map_file)"/>
+    <arg name="scan_downsampled_topic" value="$(arg scan_downsampled_topic)"/>
+  </include>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find can1_pkg)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find can1_pkg)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find can1_pkg)/config/costmap_global.yaml" command="load"/>
+    <rosparam file="$(find can1_pkg)/config/costmap_local.yaml" command="load"/>
+    <rosparam file="$(find can1_pkg)/config/move_base.yaml" command="load"/>
+    <rosparam file="$(find can1_pkg)/config/dwa_local_planner.yaml" command="load"/>
+
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="/odom"/>
+    <remap from="scan" to="$(arg scan_downsampled_topic)"/>
+  </node>
+
+  <include file="$(find can1_pkg)/launch/can1_cmd_vel.launch">
+    <arg name="cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+    <arg name="enable" value="$(arg enable_can_cmd)"/>
+  </include>
+</launch>

@@ -1,0 +1,35 @@
+<launch>
+  <arg name="map_file" default="$(find can1_pkg)/../2dmaps/room1.yaml"/>
+
+  <arg name="laser_x" default="0.12"/>
+  <arg name="laser_y" default="0.0"/>
+  <arg name="laser_z" default="0.22"/>
+
+  <arg name="laser_yaw" default="3.14159"/>
+  <arg name="laser_pitch" default="0.0"/>
+  <arg name="laser_roll" default="0.0"/>
+  <arg name="scan_topic" default="/scan"/>
+  <arg name="scan_downsampled_topic" default="/scan_downsampled"/>
+  <arg name="scan_decimate" default="5"/>
+
+  <node pkg="map_server" type="map_server" name="map_server" output="screen"
+        args="$(arg map_file)"/>
+
+  <include file="$(find can1_pkg)/launch/can1_receiver.launch"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser"
+        args="$(arg laser_x) $(arg laser_y) $(arg laser_z)
+               $(arg laser_yaw) $(arg laser_pitch) $(arg laser_roll)
+               base_link laser"/>
+
+  <node pkg="can1_pkg" type="scan_downsampler.py" name="scan_downsampler" output="screen">
+    <param name="decimate" value="$(arg scan_decimate)"/>
+    <remap from="scan_in" to="$(arg scan_topic)"/>
+    <remap from="scan_out" to="$(arg scan_downsampled_topic)"/>
+  </node>
+
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <rosparam file="$(find can1_pkg)/config/amcl.yaml" command="load"/>
+    <remap from="scan" to="$(arg scan_downsampled_topic)"/>
+  </node>
+</launch>

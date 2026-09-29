@@ -1,0 +1,83 @@
+# Local cross-compilation toolchain (downloaded dependency, very large)
+/toolchains/
+
+# Local interview preparation; not part of the public project documentation
+/INTERVIEW_GUIDE.md
+/ARCHITECTURE.md
+/TEST_REPORT.md
+/CMAKE_BUILD.md
+/autonav-architecture.json
+
+# CMake and native build output
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+build.ninja
+.ninja_deps
+.ninja_log
+
+# ROS / catkin generated workspaces and runtime data
+**/autonav_ws/build/
+**/autonav_ws/devel/
+**/autonav_ws/install/
+**/autonav_ws/log/
+**/autonav_ws/.catkin_workspace
+**/autonav_ws/.catkin_tools/
+**/autonav_ws/.ros/
+*.bag
+*.bag.active
+*.log
+
+# Keil output and per-user settings
+**/OBJ/
+**/Objects/
+**/Listings/
+**/DebugConfig/
+*.uvopt
+*.uvoptx
+*.uvgui.*
+*.uvguix.*
+
+# Compiler and linker artifacts
+*.o
+*.d
+*.crf
+*.dep
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.lnp
+*.htm
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*~
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.ppk
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub

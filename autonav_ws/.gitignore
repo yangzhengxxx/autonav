@@ -1,0 +1,24 @@
+# Catkin
+build/
+devel/
+install/
+.catkin_workspace
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# ROS / Python
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Logs / bags / tf debug dumps
+*.bag
+*.log
+.ros/
+frames.gv
+frames.pdf

@@ -1,0 +1,13 @@
+OBJ/
+DebugConfig/
+Listings/
+
+.agents/
+.vscode/
+
+.clangd
+*.uvguix.*
+*.uvoptx
+
+*.bak
+*.tmp
